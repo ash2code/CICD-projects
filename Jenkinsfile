@@ -4,14 +4,19 @@ pipeline {
     stages {
         stage("code-checkout") {
             steps {
-                git url: "https://github.com/ash2code/CICD-projects.git", branch: "main"
+                // Checkout the Terraform configuration files from GitHub
+                git url: "https://github.com/your-username/your-repo.git", branch: "main", credentialsId: "your-credentials-id"
             }
         }
 
         stage("terraform-init") {
             steps {
                 script {
-                    sh "terraform init"
+                    // Navigate to the directory where your Terraform configuration files are located
+                    dir('terraform') {
+                        // Initialize Terraform
+                        sh "terraform init"
+                    }
                 }
             }
         }
@@ -19,7 +24,10 @@ pipeline {
         stage("terraform-plan") {
             steps {
                 script {
-                    sh "terraform plan"
+                    dir('terraform') {
+                        // Generate Terraform execution plan
+                        sh "terraform plan"
+                    }
                 }
             }
         }
@@ -27,7 +35,10 @@ pipeline {
         stage("terraform-apply") {
             steps {
                 script {
-                    sh "terraform apply"
+                    dir('terraform') {
+                        // Apply Terraform configuration
+                        sh "terraform apply -auto-approve"
+                    }
                 }
             }
         }
