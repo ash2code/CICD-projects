@@ -5,6 +5,12 @@ terraform {
       version = ">= 3.0"  # Specify the version constraint based on compatibility
     }
   }
+
+  backend "s3" {
+    bucket = "my-cicd-s3-test-bucket"
+    key    = "terraform.tfstate"
+    region = "us-east-1"
+  }
 }
 
 provider "aws" {
@@ -27,12 +33,4 @@ resource "aws_s3_bucket" "my_s3_bucket" {
     Name        = "my-cicd-s3-test-bucket"
     Environment = "Dev"
   }
-}
-
-terraform {
-    backend "s3" {
-        bucket = "my-cicd-s3-test-bucket"
-        key = "terraform.tfstate"
-        region = "us-east-1"
-    }
 }
