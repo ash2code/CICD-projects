@@ -28,3 +28,12 @@ resource "aws_s3_bucket" "my_s3_bucket" {
     Environment = "Dev"
   }
 }
+
+terraform {
+    backend "s3" {
+        bucket = "my-cicd-s3-test-bucket"
+        key = "terraform.tfstate"
+        region = "us-east-1"
+      
+    }
+}
