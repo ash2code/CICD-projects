@@ -34,6 +34,8 @@ terraform {
         bucket = "my-cicd-s3-test-bucket"
         key = "terraform.tfstate"
         region = "us-east-1"
+
+force_copy = true
       
     }
 }
