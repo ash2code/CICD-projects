@@ -2,10 +2,9 @@ pipeline {
     agent any 
 
     stages {
-        stage ("code-checkout") {
+        stage("code-checkout") {
             steps {
-                git url: "https://github.com/ash2code/CICD-projects.git",
-                git branch: "main"
+                git url: "https://github.com/ash2code/CICD-projects.git", branch: "main"
             }
         }
     }
