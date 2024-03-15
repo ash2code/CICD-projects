@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage("code-checkout") {
             steps {
-               git branch: 'main', url: 'https://github.com/ash2code/CICD-projects.git'
+               git branch: 'main', url: 'https://github.com/ash2code/CICD-projects.git', dir: "terraform-project"
             }
         }
 
