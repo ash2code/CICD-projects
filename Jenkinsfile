@@ -4,8 +4,7 @@ pipeline {
     stages {
         stage("code-checkout") {
             steps {
-                // Checkout the Terraform configuration files from GitHub
-                git url: "https://github.com/your-username/your-repo.git", branch: "main", credentialsId: "your-credentials-id"
+                git url: "https://github.com/your-username/your-repo.git", branch: "main"
             }
         }
 
