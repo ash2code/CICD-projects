@@ -14,7 +14,7 @@ pipeline {
                     // Navigate to the directory where your Terraform configuration files are located
                     dir('terraform-project') {
                         // Initialize Terraform
-                        sh "terraform init -migrate-state"
+                        sh "terraform init -input=false"
                     }
                 }
             }
