@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage("code-checkout") {
             steps {
-               git branch: 'main', url: 'https://github.com/ash2code/CICD-projects.git', dir: "terraform-project"
+               git branch: 'main', url: 'https://github.com/ash2code/CICD-projects.git'
             }
         }
 
@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     // Navigate to the directory where your Terraform configuration files are located
-                    dir('terraform') {
+                    dir('terraform-project') {
                         // Initialize Terraform
                         sh "terraform init"
                     }
@@ -23,7 +23,7 @@ pipeline {
         stage("terraform-plan") {
             steps {
                 script {
-                    dir('terraform') {
+                    dir('terraform-project') {
                         // Generate Terraform execution plan
                         sh "terraform plan"
                     }
@@ -34,7 +34,7 @@ pipeline {
         stage("terraform-apply") {
             steps {
                 script {
-                    dir('terraform') {
+                    dir('terraform-project') {
                         // Apply Terraform configuration
                         sh "terraform apply -auto-approve"
                     }
