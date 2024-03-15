@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage("code-checkout") {
             steps {
-                git url: "https://github.com/your-username/your-repo.git", branch: "main"
+               git branch: 'main', url: 'https://github.com/ash2code/CICD-projects.git'
             }
         }
 
